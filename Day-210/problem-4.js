@@ -81,28 +81,31 @@ function simulateLoggerMiddleware(requests) {
 }
 
 // --- EXAMPLE USAGE ---
-console.log(
-    simulateLoggerMiddleware([
-        {
-            requestId: "R1",
-            method: "GET",
-            path: "/users",
-            statusCode: 200,
-            durationMs: 120
-        },
-        {
-            requestId: "R2",
-            method: "POST",
-            path: "/orders",
-            statusCode: 400,
-            durationMs: 45
-        },
-        {
-            requestId: "R3",
-            method: "DELETE",
-            path: "/items",
-            statusCode: 500,
-            durationMs: 300
-        }
-    ])
-);
+if (require.main === module) {
+    console.log(
+        simulateLoggerMiddleware([
+            {
+                requestId: "R1",
+                method: "GET",
+                path: "/users",
+                statusCode: 200,
+                durationMs: 120
+            },
+            {
+                requestId: "R2",
+                method: "POST",
+                path: "/orders",
+                statusCode: 400,
+                durationMs: 45
+            },
+            {
+                requestId: "R3",
+                method: "DELETE",
+                path: "/items",
+                statusCode: 500,
+                durationMs: 300
+            }
+        ])
+    );
+}
+module.exports = {simulateLoggerMiddleware};

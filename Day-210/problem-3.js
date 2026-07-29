@@ -98,29 +98,32 @@ function simulateValidationMiddleware(request, validationSchema) {
 }
 
 // --- EXAMPLE USAGE ---
-console.log(
-    simulateValidationMiddleware(
-        {
-            body: {
-                username: "ab",
-                age: 15
-            }
-        },
-        {
-            username: {
-                required: true,
-                type: "string",
-                minLength: 4
+if (require.main === module) {
+    console.log(
+        simulateValidationMiddleware(
+            {
+                body: {
+                    username: "ab",
+                    age: 15
+                }
             },
-            age: {
-                required: true,
-                type: "number",
-                min: 18
-            },
-            email: {
-                required: true,
-                type: "string"
+            {
+                username: {
+                    required: true,
+                    type: "string",
+                    minLength: 4
+                },
+                age: {
+                    required: true,
+                    type: "number",
+                    min: 18
+                },
+                email: {
+                    required: true,
+                    type: "string"
+                }
             }
-        }
-    )
-);
+        )
+    );
+}
+module.exports = {simulateValidationMiddleware};

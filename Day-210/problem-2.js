@@ -79,17 +79,21 @@ function simulateAuthMiddleware(request, validTokens) {
 }
 
 // --- EXAMPLE USAGE ---
-console.log(
-    simulateAuthMiddleware(
-        {
-            path: "/api/orders",
-            headers: {
-                Authorization: "Bearer token-abc"
-            }
-        },
-        [
-            "token-abc",
-            "token-xyz"
-        ]
-    )
-);
+if (require.main === module) {
+    console.log(
+        simulateAuthMiddleware(
+            {
+                path: "/api/orders",
+                headers: {
+                    Authorization: "Bearer token-abc"
+                }
+            },
+            [
+                "token-abc",
+                "token-xyz"
+            ]
+        )
+    );
+}
+
+module.exports = {simulateAuthMiddleware};
